@@ -1,0 +1,232 @@
+:root {
+    --font-main: "Comfortaa", sans-serif;
+    --font-secondary: "DM Mono", monospace;
+
+    
+
+    --col-main: #a666f0;
+    --col-secondary: #e4e4e4;
+    --col-background: #ffffff;
+    --col-background-secondary: #dffdff;
+
+    --gap-small: .5rem;
+    --gap-medium: 1rem;
+    --gap-large: 2rem;
+}
+
+*,*::before,*::after {
+    font-family: var(--font-main);
+}
+
+html {
+    height: 100%;
+}
+body {
+    /* background-color: black;
+    color: white; */
+    /* followed this example to archive sticky footer https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Sticky_footers */
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+a {
+
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+a:hover {
+    color: var(--col-main);
+}
+
+footer {
+    padding: var(--gap-small);
+    display: flex;
+    justify-content: space-between;
+}
+
+footer span {
+    font-family: var(--font-secondary);
+}
+
+footer .socials {
+    display: flex;
+    gap: var(--gap-small);
+}
+
+time {
+    font-family: var(--font-secondary);
+}
+
+/* utility classes */
+
+.vert-spacing {
+    margin: var(--gap-large) 0;
+}
+
+.spacing-before {
+    /* margin: var(--gap-large) 0 0 0; */
+    margin: 10rem;
+}
+
+.spacing-below {
+    margin: 0 0 var(--gap-small) 0;
+}
+
+.heading__center {
+    text-align: center;
+    font-family: var(--font-secondary);
+}
+
+.vert-align {
+    text-align: center
+}
+
+
+.main__space__before {
+    margin-top: 4rem;
+}
+
+/* classes */
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    top:0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:  var(--gap-small);
+}
+
+.navbar ul {
+    display: flex;
+    gap: var(--gap-small);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.navbar li a {
+    /* text-shadow: 0px 0px 5px white; */
+}
+
+#logo__img {
+    max-width: 40px;
+}
+
+#hero {
+    /* background-image: url("images/mediaOffline.PNG"); */
+    position: relative;
+
+}
+
+#hero__title {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--col-background);
+    right: 1rem;
+    bottom: 2rem;
+}
+
+#hero__subtitle {
+    position: absolute;
+    color: var(--col-background);
+    right: 1rem;
+    bottom: 1rem;
+}
+
+#hero img {
+    width: 100%;
+    /* max-height: 100%; */
+    height: 100vh;
+    object-fit:cover;
+    object-position: 40% 0;
+}
+
+.carousel ul {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel li {
+    margin: var(--gap-small);
+}
+
+.carousel img {
+    height: 6rem;
+    object-fit:cover;
+}
+
+.card {
+    max-width: 8rem;
+}
+
+.map {
+    /* max-width: 100%; */
+    height: 50vh;
+}
+
+.map__fullscreen {
+    height: 60vh;
+}
+
+#suggestion {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 var(--gap-medium) 0;
+}
+
+#suggestion__header {
+    margin: var(--gap-medium);
+}
+
+#suggestion__fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--col-main);
+    padding: var(--gap-small);
+    background-color: var(--col-secondary);
+}
+
+#suggestion__send {
+    
+}
+
+/* modal */
+
+#modal {
+    background-color: var(--col-background);
+    padding: var(--gap-large);
+    border: none;
+}
+
+#modal__location,
+#modal__reason {
+    color: var(--col-secondary);
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 2rem;
+    }
+    #logo__img {
+        max-width: 80px;
+    }
+}

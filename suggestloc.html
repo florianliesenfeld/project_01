@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel blog</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script type="text/javascript" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html">
+            <img src="images/sphere_08.png" id="logo__img" alt="">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="suggestloc.html">suggest</a></li>
+                <li><a href="about.html">about</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main__space__before">
+        <dialog id="modal">
+            <h2>thanks</h2>
+            <p class="spacing-below">for suggesting <span id="modal__location"></span> because <span id="modal__reason"></span></p>
+            <button id="modal__close" class="btn" autofocus>close</button>
+        </dialog>
+        <header id="suggestion__header" class="vert-spacing spacing-before">
+            <h1 class="heading__center spacing-below">suggest location</h1>
+            <p class="vert-align">Do you have a suggestion for me where to travel next?</p>
+        </header>
+        <form id="suggestion">
+            <fieldset id="suggestion__fieldset">
+                <input type="text" id="suggestion__location" placeholder="where to go?">
+                <textarea name="suggestion__reason" id="suggestion__reason" rows="3", columns="25" placeholder="why should I go?"></textarea>
+                <input type="submit" id="suggestion__send" class="btn vert-align" value="send">
+            </fieldset>
+        </form>
+        <section id="map" class="map__fullscreen"></section>
+    </main>
+    <footer>
+        <p>&copy;<span class="current-year">2024</span></p>
+        <ul class="socials">
+            <li><a href="javascript:void(0)">bluesky</a></li>
+            <li><a href="javascript:void(0)">instagram</a></li>
+            <li><a href="javascript:void(0)">github</a></li>
+        </ul>
+        <a href="javascript:void(0)">imprint</a>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/suggestion.js"></script>
+</body>
+</html>
+        
