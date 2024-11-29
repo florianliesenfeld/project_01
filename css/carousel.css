@@ -1,0 +1,43 @@
+.carousel {
+}
+
+.carousel ul {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: var(--gap-small);
+    gap: var(--gap-small);
+    /* Firefox */
+    /* scrollbar-width: none;   */
+}
+
+.carousel li {
+    /* margin: var(--gap-small); */
+    flex: 0 0 auto;
+}
+
+.carousel li a:hover img {
+    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
+}
+
+.carousel img {
+    height: 8rem;
+    object-fit:cover;
+}
+
+.card {
+    max-width: 12rem;
+}
+
+.carousel ul::-webkit-scrollbar {
+    /* Safari and Chrome */
+    /* display: none;   */
+}
+
+@media screen and (min-width: 1024px) {
+    .carousel img {
+        height: 12rem;
+    }
+}

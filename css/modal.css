@@ -1,0 +1,11 @@
+#modal {
+    background-color: var(--col-background);
+    padding: var(--gap-large);
+    border: none;
+}
+
+#modal__location,
+#modal__date,
+#modal__reason {
+    color: var(--col-main);
+}

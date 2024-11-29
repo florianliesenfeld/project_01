@@ -1,0 +1,7 @@
+.container__medium {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* width: 75%; */
+    text-align: center;
+    margin: var(--gap-large);
+}

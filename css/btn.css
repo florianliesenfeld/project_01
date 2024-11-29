@@ -1,0 +1,7 @@
+.btn {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--col-main);
+    padding: var(--gap-small);
+    background-color: var(--col-secondary);
+}

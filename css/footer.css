@@ -1,0 +1,25 @@
+footer {
+    padding: var(--gap-small);
+    margin: var(--gap-medium) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer span {
+    font-family: var(--font-secondary);
+}
+
+footer .socials {
+    display: flex;
+    gap: var(--gap-small);
+}
+
+footer .socials svg {
+    margin: 0 .25rem;
+    /* width: 2rem; */
+}
+
+time {
+    font-family: var(--font-secondary);
+}

@@ -1,0 +1,29 @@
+.vert-spacing {
+    margin: var(--gap-large) 0;
+}
+
+.vert-spacing--large {
+    margin: var(--gap-xlarge) 0;
+}
+
+.spacing-before {
+    /* margin: var(--gap-large) 0 0 0; */
+    margin: 10rem;
+}
+
+.spacing-below {
+    margin: 0 0 var(--gap-small) 0;
+}
+
+.heading__center {
+    text-align: center;
+    font-family: var(--font-secondary);
+}
+
+.vert-align {
+    text-align: center
+}
+
+.main__space__before {
+    margin-top: 4rem;
+}

@@ -1,0 +1,15 @@
+#suggestion {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 var(--gap-medium) 0;
+}
+
+#suggestion__header {
+    margin: var(--gap-medium);
+}
+
+#suggestion__fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
