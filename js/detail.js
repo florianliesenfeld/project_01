@@ -1,7 +1,6 @@
-const url = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 // weather API key in seperated file / need to add you own key get it at https://openweathermap.org/
 // const weatherApiKey = "";
-// const location = "Abuja"
+
 const searchParams = new URLSearchParams(location.search);
 const locationId = searchParams.get("id");
 const headingMain = document.querySelector("#heading__main");
@@ -10,12 +9,6 @@ const headingDate = document.querySelector("#heading__date");
 const textBodyMain = document.querySelector("#text__body");
 const imageGallery = document.querySelector(".gallery");
 const textCredits = document.querySelector("#text-credits");
-
-// weather
-const weatherIcon = document.querySelector("#weather__icon")
-const weatherTemp = document.querySelector("#weather__temp");
-const weatherDescription = document.querySelector("#weather__description");
-
 
 function populate() {
     // populate detail page with information from locations.js file 
@@ -27,33 +20,67 @@ function populate() {
     textCredits.innerHTML = locations[locationId].credits;
 }
 
-function drawData(data) {
-    // get region name from weahter API to display in the head of the page
-    const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
-    const regionName = regionNamesInEnglish.of(data.sys.country);
-    headingSub.textContent = regionName;
+function drawData(data, type) {
+    switch (type) {
+        case "weather":
+            const weatherIcon = document.querySelector("#weather__icon")
+            const weatherTemp = document.querySelector("#weather__temp");
+            const weatherDescription = document.querySelector("#weather__description");
 
-    // draw weather data
-    weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-    weatherTemp.textContent = `${Math.round(data.main.temp)} °C`;
-    weatherDescription.textContent = data.weather[0].description;
-    
-    console.log(data.weather[0].description);
+            weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+            weatherTemp.textContent = `${Math.round(data.main.temp)} °C`;
+            weatherDescription.textContent = data.weather[0].description;  
+            break;
+        case "pollution":
+            const pollutionAqi = document.querySelector("#pollution__aqi");
+            const pollutionComponent = document.querySelector("#pollution__component");
+
+            pollutionAqi.textContent = `${data.list[0].main.aqi}`;
+            pollutionComponent.textContent = `${data.list[0].components.pm2_5}`;
+        case "geoCoding":
+            const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
+            const regionName = regionNamesInEnglish.of(data[0].country);
+
+            console.log(data[0].country);
+            headingSub.textContent = regionName;
+            break;
+        default:
+            break;
+    }    
 }
 
-populate();
-
-async function getWeather(location) {
+async function getData(type) {
+    let url = "";
+    switch (type) {
+        case "weather":
+            const urlWeather = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
+            url = `${urlWeather}&q=${locations[locationId].location}&appid=${weatherApiKey}`;
+            break;
+        case "pollution":
+            const urlPollution = `http://api.openweathermap.org/data/2.5/air_pollution`;
+            url = `${urlPollution}?lat=${locations[locationId].geoLoc.lat}&lon=${locations[locationId].geoLoc.lon}&appid=${weatherApiKey}`;
+            break;
+        case "geoCoding":
+            const urlGeoCoding = `http://api.openweathermap.org/geo/1.0/direct?limit=1`;
+            url = `${urlGeoCoding}&q=${locations[locationId].location}&appid=${weatherApiKey}`;
+            break;
+        default:
+            break;
+    }
     try {
-        const response = await fetch(`${url}&q=${location}&appid=${weatherApiKey}`);
+        const response = await fetch(url);
         if(!response.ok) {
             throw new Error(`Response status: ${response.status}`)
         }
-        const weatherData = await response.json();
+        const data = await response.json();
         // console.log(weatherData);
-        drawData(weatherData);
+        drawData(data, type);
     } catch(error) {
         console.error(error.message);
     }
 }
-getWeather(locations[locationId].location)
+
+populate();
+getData("geoCoding");
+getData("weather");
+getData("pollution");

@@ -4,10 +4,15 @@
 
 .grid__container__row {
     display: grid;
-    /* flex-flow: row wrap; */
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 .grid__element {
     padding: var(--gap-medium);
+}
+
+@media screen and (min-width: 1024px) {
+    .grid__container__row {
+        grid-template-columns: 2fr 1fr;
+    }
 }

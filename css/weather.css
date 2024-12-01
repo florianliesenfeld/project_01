@@ -15,7 +15,13 @@
     justify-content: center;
 }
 
-#weather__temp {
+#weather__temp,
+.pollution__data {
     font-size: 2rem;
     font-weight: 900;
+}
+
+.pollution__label {
+    width: 16rem;
+    display: inline-block;
 }

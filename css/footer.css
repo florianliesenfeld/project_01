@@ -6,10 +6,6 @@ footer {
     align-items: center;
 }
 
-footer span {
-    font-family: var(--font-secondary);
-}
-
 footer .socials {
     display: flex;
     gap: var(--gap-small);
@@ -18,8 +14,4 @@ footer .socials {
 footer .socials svg {
     margin: 0 .25rem;
     /* width: 2rem; */
-}
-
-time {
-    font-family: var(--font-secondary);
 }
