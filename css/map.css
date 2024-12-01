@@ -3,6 +3,10 @@
     height: 60vh;
 }
 
-.map__fullscreen {
-    height: 60vh;
+.map--height-small {
+    height: 30vh;
+}
+
+.map--height-medium {
+    height: 40vh;
 }

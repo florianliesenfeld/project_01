@@ -2,6 +2,10 @@
     margin: var(--gap-large) 0;
 }
 
+.vert-spacing--medium {
+    margin: var(--gap-medium) 0;
+}
+
 .vert-spacing--large {
     margin: var(--gap-xlarge) 0;
 }
@@ -20,10 +24,22 @@
     font-family: var(--font-secondary);
 }
 
-.vert-align {
+.heading__secondary {
+    font-family: var(--font-secondary);
+}
+
+.horizontal-align {
     text-align: center
 }
 
 .main__space__before {
     margin-top: 4rem;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.paragraph {
+    text-align: justify;
 }

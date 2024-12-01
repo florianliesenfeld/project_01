@@ -1,0 +1,21 @@
+.img__weather-thumbnail {
+    width: 128px;
+    height: 128px;
+    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
+    /* filter: grayscale(); */
+}
+
+.weather__container {
+    display: flex;
+}
+
+.weather__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#weather__temp {
+    font-size: 2rem;
+    font-weight: 900;
+}

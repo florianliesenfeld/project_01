@@ -1,7 +1,13 @@
 .container__medium {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* width: 75%; */
-    text-align: center;
     margin: var(--gap-large);
+}
+
+.grid__container__row {
+    display: grid;
+    /* flex-flow: row wrap; */
+    grid-template-columns: 2fr 1fr;
+}
+
+.grid__element {
+    padding: var(--gap-medium);
 }

@@ -11,7 +11,7 @@
 @import url("btn.css");
 @import url("modal.css");
 
-/* suggestion */
+@import url("weather.css");
 @import url("suggestion.css");
 
 @import url("footer.css");

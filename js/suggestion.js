@@ -1,3 +1,5 @@
+// get form data about travel suggestion
+
 let fSuggestion = document.querySelector("#suggestion");
 let elBtSuggestion = document.querySelector("#suggestion__send");
 let elSuggestionLocation = document.querySelector("#suggestion__location");
