@@ -1,4 +1,5 @@
 // weather API key in seperated file / need to add you own key get it at https://openweathermap.org/
+// put key in row below and uncomment
 // const weatherApiKey = "";
 
 const searchParams = new URLSearchParams(location.search);
@@ -7,17 +8,35 @@ const headingMain = document.querySelector("#heading__main");
 const headingSub = document.querySelector("#heading__sub");
 const headingDate = document.querySelector("#heading__date");
 const textBodyMain = document.querySelector("#text__body");
-const imageGallery = document.querySelector(".gallery");
+
 const textCredits = document.querySelector("#text-credits");
+
+const locationPrevious = document.querySelector("#location__previous");
+const locationNext = document.querySelector("#location__next");
+
+function navigateLocations() {
+    // get idTogoTo by adding either 1 or #ofLocations-1 and taking the modulo to stay within Array boundaries
+    let idPrevious = (Number(locationId)+(locations.length-1)) % (locations.length);
+    let idNext = (Number(locationId)+1) % (locations.length);
+
+    // set href and the name of previous Location 
+    locationPrevious.setAttribute("href", `detail.html?id=${locations[idPrevious].id}`);
+    locationPrevious.innerHTML = `&#10229; ${locations[idPrevious].location}`;
+    
+    // set href and the name of next Location
+    locationNext.innerHTML = `${locations[idNext].location} &#10230;`;
+    locationNext.setAttribute("href", `detail.html?id=${locations[idNext].id}`);
+}
 
 function populate() {
     // populate detail page with information from locations.js file 
     headingMain.textContent = locations[locationId].location;
     headingDate.textContent = `${locations[locationId].period.start} to ${locations[locationId].period.end}`;
-    imageGallery.firstElementChild.setAttribute("src",`images/${locations[locationId].images[0]}`);
-    imageGallery.firstElementChild.setAttribute("alt",`images/${locations[locationId].altImages[0]}`);
+    
     textBodyMain.textContent = locations[locationId].textBody;
     textCredits.innerHTML = locations[locationId].credits;
+
+    navigateLocations();
 }
 
 function drawData(data, type) {
@@ -41,7 +60,6 @@ function drawData(data, type) {
             const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
             const regionName = regionNamesInEnglish.of(data[0].country);
 
-            console.log(data[0].country);
             headingSub.textContent = regionName;
             break;
         default:

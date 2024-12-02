@@ -1,5 +1,19 @@
+// create maps and markers
+
 let map;
 
+// function for creating a based on the parameters lat,lon,zoom and mapUrl
+function createMap(lat,lon,zoom, mapUrl) {
+    map = L.map('map').setView([lat, lon], zoom);
+    // Style URL format in XYZ PNG format; see our documentation for more options
+    L.tileLayer(`https://tiles.stadiamaps.com/tiles/${mapUrl}/{z}/{x}/{y}{r}.png`, {
+        maxZoom: 20,
+        minZoom: 2,
+        attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', 
+    }).addTo(map);
+}
+
+// function for creating Markers and adding it to the map, Marker Positions are saved in the locations Array
 function createMarker(overview) {
     if(overview) {
         for(let entry in locations) {
@@ -12,16 +26,7 @@ function createMarker(overview) {
     }
 }
 
-function createMap(lat,lon,zoom, mapUrl) {
-    map = L.map('map').setView([lat, lon], zoom);
-    // Style URL format in XYZ PNG format; see our documentation for more options
-    L.tileLayer(`https://tiles.stadiamaps.com/tiles/${mapUrl}/{z}/{x}/{y}{r}.png`, {
-        maxZoom: 20,
-        minZoom: 2,
-        attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>', 
-    }).addTo(map);
-}
-
+// function to determine the current page and calling the creatiion of the corresponding maps and markers
 function getCurrentPage() {
     let currentPath = location.pathname.split("/");
     let currentPage = currentPath[currentPath.length-1];
@@ -48,6 +53,3 @@ function getCurrentPage() {
 }
 
 getCurrentPage();
-
-
-

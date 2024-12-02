@@ -5,11 +5,13 @@
 /* index */
 @import url("hero.css");
 
+/* components */
 @import url("container.css");
 @import url("carousel.css");
 @import url("map.css");
 @import url("btn.css");
 @import url("modal.css");
+@import url("gallery.css");
 
 @import url("weather.css");
 @import url("suggestion.css");

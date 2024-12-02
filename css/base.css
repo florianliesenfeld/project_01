@@ -3,7 +3,8 @@
     --font-secondary: "DM Mono", monospace;
 
     --col-main: #a666f0;
-    --col-secondary: #e4e4e4;
+    --col-main-dark: #3d245a;
+    --col-secondary: #eeeeee;
     --col-background: #ffffff;
     --col-background-secondary: #dffdff;
 
@@ -40,11 +41,14 @@ h2 {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 time {
     font-family: var(--font-secondary);
+}
+a {
+    color: var(--col-main-dark);
 }
 
 a:hover {

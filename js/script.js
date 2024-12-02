@@ -1,7 +1,4 @@
-// import weatherApiKey from "keys.js";
-// import { locations } from "./locations.js";
-
-// Get Current Year
+// Get Current Year and display on the page
 let currentYears = document.querySelectorAll(".current-year");
 const today = new Date();
 

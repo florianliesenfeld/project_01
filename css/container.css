@@ -11,6 +11,11 @@
     padding: var(--gap-medium);
 }
 
+.flex__space__between {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (min-width: 1024px) {
     .grid__container__row {
         grid-template-columns: 2fr 1fr;
