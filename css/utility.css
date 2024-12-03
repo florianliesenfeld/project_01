@@ -43,3 +43,7 @@
 .paragraph {
     text-align: justify;
 }
+
+.block {
+    display: inline-block;
+}

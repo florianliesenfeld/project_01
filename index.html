@@ -32,7 +32,8 @@
         </a>
         <nav>
             <ul>
-                <li><a href="suggestlocation.html">suggest</a></li>
+                <li><a href="suggestlocation.html">+one</a></li>
+                <li><a href="coords.html">xyzt</a></li>
                 <li><a href="about.html">about</a></li>
             </ul>
         </nav>
@@ -46,11 +47,12 @@
 
         <section class="container__medium vert-spacing--large horizontal-align">
             <p>I'll have been travelled to the future for you and it does look grim.</p>
+            <p><a class="btn block vert-spacing" href="suggestlocation.html">suggest where next</a></p>
         </section>
 
         <section class="vert-spacing">
             <h2 class="heading__center vert-spacing">recent locations</h2>
-            <div class="carousel" data-flickity='{ "wrapAround": true }'></div>
+            <div class="carousel carousel--card" data-flickity='{ "wrapAround": true }'></div>
         </section>
 
         <section id="map" class="map vert-spacing"></section>
@@ -77,9 +79,10 @@
         </ul>
         <a href="about.html">imprint</a>
     </footer>
-    
+
     <script src="js/locations.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/serialization.js"></script>
     <script src="js/map.js"></script>
     <script src="js/carousel.js"></script>
 </body>

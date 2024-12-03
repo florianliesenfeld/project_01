@@ -24,4 +24,8 @@ function populateGallery() {
     document.querySelector(".carousel").innerHTML = result;
 }
 
-populateGallery();
+if(currentPage==="detail") {
+    populateGallery();
+} else if(currentPage==="index") {
+    createCards();
+}

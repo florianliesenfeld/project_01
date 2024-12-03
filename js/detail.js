@@ -33,6 +33,9 @@ function populate() {
 
     document.querySelector("#heading__main").textContent = locations[locationId].location;
     document.querySelector("#heading__date").textContent = `${locations[locationId].period.start} to ${locations[locationId].period.end}`;
+
+    document.querySelector("#text__heading").textContent = locations[locationId].location;
+    document.querySelector("#text__reason").textContent = locations[locationId].reason;
     document.querySelector("#text__body").textContent = locations[locationId].textBody;
     document.querySelector("#text-credits").innerHTML = locations[locationId].credits;
     navigateLocations();
@@ -55,6 +58,7 @@ function drawData(data, type) {
             const regionName = regionNamesInEnglish.of(data[0].country);
 
             document.querySelector("#heading__sub").textContent = regionName;
+            document.querySelector("#text__heading").innerHTML = `${locations[locationId].location} | ${regionName}`;
             break;
         default:
             break;

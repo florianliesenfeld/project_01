@@ -8,6 +8,8 @@ let elSuggestionReason = document.querySelector("#suggestion__reason");
 let elModal = document.querySelector("#modal");
 let elBnModalClose = document.querySelector("#modal__close");
 
+let currentSuggestionLocation;
+
 // function to set the current date
 function setCurrentDate() {
     const date = today.toISOString().split("T")[0];
@@ -45,6 +47,39 @@ function setCurrentLocation() {
         navigator.geolocation.getCurrentPosition(success, error);
     }
   }
+// function to create a random end datebased on start date + maximal range
+function createRandomDate(startDate, range) {
+    const date = new Date(startDate);
+    const endDate = date.getDate()+Math.floor(Math.random()*range);
+    date.setDate(endDate);
+    return date.toISOString().split("T")[0]
+}
+
+function createLocationObject() {
+const locationToAdd = {
+    id: locations.length,
+    location: elSuggestionLocation.value,
+    geoLoc: {lat: 33.513229131401154, lon: 36.276832308243854},
+    period: {start: elSuggestionDate.value, end: createRandomDate(elSuggestionDate.value, 7)},
+    places: [{lat: 33.511373686074556, lon: 36.30689980504887}],
+    thumbnail: {thumb: "atb_logo_13_blackbg.jpg",
+                alt: "white glowing cube in front of dark background"},
+    images: ["travelBlog_Damascus_01.jpg",
+            "travelBlog_Damascus_02.jpg",
+            "travelBlog_Damascus_03.jpg",
+            "travelBlog_Damascus_04.jpg"],
+    altImages:  ["",
+                "",
+                "",
+                ""],
+    credits: [`Location ${elSuggestionLocation.value} was suggested by user.<p>Do you want to make a suggestion as well? <a href='suggestlocation.html'>[click here]</a></p>`],
+    reason: elSuggestionReason.value,
+    textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
+    suggested: true
+};
+// console.log(locationToAdd);
+return locationToAdd;
+}
 
 // event listener to send form
 elBtSuggestion.addEventListener("click", function(e) {
@@ -54,6 +89,7 @@ elBtSuggestion.addEventListener("click", function(e) {
     let reason = elSuggestionReason.value;
     if(location !== "" && date !== "" && reason !== "") {
         confirmSuggestion(location, date, reason);
+        locationsSerialized.addLocation(createLocationObject());
         elSuggestionLocation.value = "";
         elSuggestionDate.value = today.toISOString().split("T")[0];
         elSuggestionReason.value = "";
@@ -71,7 +107,7 @@ elBnModalClose.addEventListener("click", function() {
 
 // event listener to update map view to location entered in form - triggered when input field looses focus
 elSuggestionLocation.addEventListener("focusout", function() {
-    getCoordinates("geoCodingGeneral", elSuggestionLocation.value);
+    currentSuggestionLocation = getCoordinates("geoCodingGeneral", elSuggestionLocation.value);
 });
 
 setCurrentDate();

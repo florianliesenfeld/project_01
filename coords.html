@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>another travel blog | suggest</title>
+    <title>another travel blog | coords</title>
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
     <meta name="author" content="Florian Liesenfeld">
     <meta name="description" content="Another travel blog is a time travel blog. Suggest a new spacetime-coordinate and I will have been travelled to the future for you.">
@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script type="text/javascript" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -36,24 +39,16 @@
         </nav>
     </header>
     <main class="main__space__before">
-        <dialog id="modal">
-            <h2>thanks</h2>
-            <p class="spacing-below">for suggesting <span id="modal__location"></span> on the <span id="modal__date"></span> because <span id="modal__reason"></span></p>
-            <button id="modal__close" class="btn" autofocus>close</button>
-        </dialog>
-        <header id="suggestion__header" class="vert-spacing--medium">
-            <h1 class="heading__center spacing-below">suggest location</h1>
-            <p class="horizontal-align">Do you have a suggestion for me where and when to travel next?</p>
+        <header class="vert-spacing--medium">
+            <h1 class="heading__center spacing-below">spacetime coordinates</h1>
+            <p class="horizontal-align vert-spacing">all the spacetime coordinates that i have travelled to</p>
+            <p class="horizontal-align"><a class="btn block" href="suggestlocation.html">suggest where next</a></p>
         </header>
-        <form id="suggestion">
-            <fieldset id="suggestion__fieldset">
-                <input type="date" id="suggestion__date" min="2024-11-28" value="2024-11-28">
-                <input type="text" id="suggestion__location" placeholder="where to go?">
-                <textarea name="suggestion__reason" id="suggestion__reason" rows="3", columns="25" placeholder="why should I go?"></textarea>
-                <input type="submit" id="suggestion__send" class="btn horizontal-align" value="send">
-            </fieldset>
-        </form>
-        <section id="map" class="map map--height-large"></section>
+
+        <section class="vert-spacing">
+            <h2 class="heading__center vert-spacing">locations</h2>
+            <ul class="list"></ul>
+        </section>
     </main>
 
     <footer>
@@ -81,10 +76,6 @@
     <script src="js/locations.js"></script>
     <script src="js/script.js"></script>
     <script src="js/serialization.js"></script>
-    <script src="js/keys.js"></script>
-    <script src="js/weatherApi.js"></script>
-    <script src="js/suggestion.js"></script>
-    <script src="js/map.js"></script>
+    <script src="js/list.js"></script>
 </body>
 </html>
-        

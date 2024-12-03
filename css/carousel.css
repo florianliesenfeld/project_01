@@ -1,4 +1,12 @@
 /* custom styles for flickity */
+.carousel {
+    height: 224px;
+}
+
+.carousel--card {
+    height: 296px;
+}
+
 .carousel-cell {
     /* width: 66%; */
     /* height: 200px; */
@@ -48,6 +56,12 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .carousel {
+        height: 576px;
+    }
+    .carousel--card {
+        height: 721px;
+    }
     .carousel img {
         height: 576px;
     }
@@ -59,6 +73,12 @@
 }
 
 @media screen and (min-width: 3200px) {
+    .carousel {
+        height: 896px;
+    }
+    .carousel--card {
+        height: 1041px;
+    }
     .carousel img {
         height: 896px;
     }

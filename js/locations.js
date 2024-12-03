@@ -1,4 +1,4 @@
-const locations = [
+const locationsOffline = [
     {
         id: 0,
         location: "Damascus",
@@ -16,6 +16,7 @@ const locations = [
                     "grainy high contrast monochrome rendering of the inner courtyard of Umayyad Mosque in Damascus",
                     "grainy high contrast monochrome rendering of the Umayyad Mosque in Damascus"],
         credits: ["3D model by MiniWorld3D <a href='https://www.printables.com/model/519393-great-mosque-of-damascus-syria/files' target='_blank'>[printables]</a>"],
+        reason: "Syria is one of the 10 countries most affected by the man made climate change.",
         textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
         suggested: false
     },
@@ -36,6 +37,7 @@ const locations = [
                     "grainy monochrome rendering of the Eiffel Tower",
                     "grainy monochrome rendering of the Eiffel Tower"],
         credits: ["3D model by AdrienJ <a href='https://www.turbosquid.com/3d-models/eiffel-tower-3d-model-1940053' target='_blank'>[turbosquid]</a>"],
+        reason: "Paris is the most dense city in europe, learnings from here can be applied in multiple european cities.",
         textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem perferendis dolor numquam similique adipisci odit? Quo ducimus quia alias quisquam omnis? Mollitia quo quia, recusandae deserunt repellat impedit consequatur quae!",
         suggested: false
     },
@@ -56,6 +58,7 @@ const locations = [
                     "grainy monochrome rendering of the Abuja National Mosque in Abuja",
                     "grainy monochrome rendering of the Abuja National Mosque in Abuja"],
         credits: ["3D model by MiniWorld3d <a href='https://www.printables.com/model/664805-abuja-national-mosque-nigeria/files' target='_blank'>[printables]</a>"],
+        reason: "Nigeria is one of the 10 countries most affected by the man made climate change.",
         textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem perferendis dolor numquam similique adipisci odit? Quo ducimus quia alias quisquam omnis? Mollitia quo quia, recusandae deserunt repellat impedit consequatur quae!",
         suggested: false
     },
@@ -76,6 +79,7 @@ const locations = [
                     "grainy high contrast monochrome rendering of the Brandenburg Gate in Berlin",
                     "grainy high contrast monochrome rendering of the Brandenburg Gate in Berlin"],
         credits: ["3D model by jo2bigornia <a href='https://www.turbosquid.com/3d-models/free-max-mode-berlin-gate/675373' target='_blank'>[turbosquid]</a>"],
+        reason: "Berlin will mainly face more heat waves and droughts in the future.",
         textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem perferendis dolor numquam similique adipisci odit? Quo ducimus quia alias quisquam omnis? Mollitia quo quia, recusandae deserunt repellat impedit consequatur quae!",
         suggested: false
     }
