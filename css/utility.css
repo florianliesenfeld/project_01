@@ -10,6 +10,10 @@
     margin: var(--gap-xlarge) 0;
 }
 
+.horizontal-spacing {
+    margin: 0 var(--gap-small);
+}
+
 .spacing-before {
     /* margin: var(--gap-large) 0 0 0; */
     margin: 10rem;
@@ -46,4 +50,8 @@
 
 .block {
     display: inline-block;
+}
+
+.padding__below {
+    padding-bottom: var(--gap-large);
 }

@@ -50,7 +50,7 @@ async function getCoordinates(type, location) {
             // console.log(data[0].lat,data[0].lon);
 
             map.setView([data[0].lat,data[0].lon], 10);
-            L.marker([data[0].lat, data[0].lon]).addTo(map);
+            L.marker([data[0].lat, data[0].lon], {icon: boxIcon}).addTo(map);
             // return data;
 
         } catch (error) {

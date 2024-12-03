@@ -34,20 +34,21 @@
 } */
 
 /* custom styles */
-.carousel a:hover img {
-    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
-}
 
 .card {
     /* max-width: 14rem; */
     /* max-width: 14rem; */
     width: 220px;
-
 }
 
 .card__img {
     /* width: 28rem; */
     /* object-fit: contain; */
+}
+
+a:hover .card img {
+    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
+    box-shadow: 0 0 .5rem .1rem var(--col-main);
 }
 
 .card__heading {

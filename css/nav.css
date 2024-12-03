@@ -9,6 +9,11 @@
     justify-content: space-between;
     align-items: center;
     padding:  var(--gap-small);
+    pointer-events: none;
+}
+
+.navbar__logo {
+    pointer-events: auto;
 }
 
 .navbar ul {
@@ -16,6 +21,7 @@
     gap: var(--gap-small);
     font-weight: 700;
     font-size: 1.5rem;
+    pointer-events: auto;
 }
 .navbar li a {
     /* filter: invert(1); */

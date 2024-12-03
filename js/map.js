@@ -2,6 +2,21 @@
 
 let map;
 
+let boxIcon2 = L.icon({
+    iconUrl: 'images/marker/atb_marker_bright_06.png',
+    iconSize:     [128, 128], // size of the icon
+    iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+let boxIcon = L.icon({
+    iconUrl: 'images/marker/atb_marker_dark_03.png',
+    iconSize:     [128, 128], // size of the icon
+    iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+
 // function for creating a based on the parameters lat,lon,zoom and mapUrl
 function createMap(lat,lon,zoom, mapUrl) {
     map = L.map('map').setView([lat, lon], zoom);
@@ -17,11 +32,21 @@ function createMap(lat,lon,zoom, mapUrl) {
 function createMarker(overview) {
     if(overview) {
         for(let entry in locations) {
-            L.marker([locations[entry].geoLoc.lat, locations[entry].geoLoc.lon]).addTo(map);
+            L.marker([locations[entry].geoLoc.lat, locations[entry].geoLoc.lon], {icon: boxIcon}).on("click", function() {
+                window.location.href=`detail.html?id=${locations[entry].id}`;
+            }).on("mouseover", function() {
+                this.setIcon(boxIcon2);
+            }).on("mouseout", function() {
+                this.setIcon(boxIcon);
+            }).addTo(map);
         }
     } else {
         for(let entry in locations[locationId].places) {
-            L.marker([locations[locationId].places[entry].lat, locations[locationId].places[entry].lon]).addTo(map);
+            L.marker([locations[locationId].places[entry].lat, locations[locationId].places[entry].lon], {icon: boxIcon}).on("mouseover", function() {
+                this.setIcon(boxIcon2);
+            }).on("mouseout", function() {
+                this.setIcon(boxIcon);
+            }).addTo(map);
         }
     }
 }

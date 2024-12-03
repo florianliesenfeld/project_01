@@ -1,12 +1,13 @@
 .btn {
     cursor: pointer;
     font-weight: 700;
-    color: var(--col-main);
+    color: var(--col-background);
     padding: var(--gap-small);
-    background-color: var(--col-secondary);
+    background-color: var(--col-main-dark);
 }
 
 .btn:hover {
-    background-color: var(--col-main);
-    color: var(--col-main-dark);
+    background-color: var(--col-main-dark);
+    color: var(--col-main);
+    box-shadow: 0 0 3rem .2rem var(--col-main);
 }

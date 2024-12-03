@@ -31,7 +31,7 @@ function showError() {
     elModal.showModal();
 }
 
-// function to get 
+// function to set the viewort center to the current location
 function setCurrentLocation() {
     function success(position) {
         map.setView([position.coords.latitude,position.coords.longitude], 10);
@@ -46,7 +46,8 @@ function setCurrentLocation() {
     } else {
         navigator.geolocation.getCurrentPosition(success, error);
     }
-  }
+}
+
 // function to create a random end datebased on start date + maximal range
 function createRandomDate(startDate, range) {
     const date = new Date(startDate);
@@ -55,6 +56,7 @@ function createRandomDate(startDate, range) {
     return date.toISOString().split("T")[0]
 }
 
+// function to create the location object of the suggested location
 function createLocationObject() {
 const locationToAdd = {
     id: locations.length,
@@ -64,11 +66,15 @@ const locationToAdd = {
     places: [{lat: 33.511373686074556, lon: 36.30689980504887}],
     thumbnail: {thumb: "atb_logo_13_blackbg.jpg",
                 alt: "white glowing cube in front of dark background"},
-    images: ["travelBlog_Damascus_01.jpg",
-            "travelBlog_Damascus_02.jpg",
-            "travelBlog_Damascus_03.jpg",
-            "travelBlog_Damascus_04.jpg"],
+    images: ["atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg"],
     altImages:  ["",
+                "",
+                "",
                 "",
                 "",
                 ""],

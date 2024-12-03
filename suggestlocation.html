@@ -24,8 +24,8 @@
 </head>
 <body>
     <header class="navbar">
-        <a href="index.html">
-            <img src="images/sphere_08.png" id="logo__img" alt="">
+        <a class="navbar__logo" href="index.html">
+            <img src="images/logo/atb_logo.png" id="logo__img" alt="">
         </a>
         <nav>
             <ul>
@@ -45,12 +45,12 @@
             <h1 class="heading__center spacing-below">suggest location</h1>
             <p class="horizontal-align">Do you have a suggestion for me where and when to travel next?</p>
         </header>
-        <form id="suggestion">
+        <form class="spacing-below padding__below" id="suggestion">
             <fieldset id="suggestion__fieldset">
                 <input type="date" id="suggestion__date" min="2024-11-28" value="2024-11-28">
                 <input type="text" id="suggestion__location" placeholder="where to go?">
                 <textarea name="suggestion__reason" id="suggestion__reason" rows="3", columns="25" placeholder="why should I go?"></textarea>
-                <input type="submit" id="suggestion__send" class="btn horizontal-align" value="send">
+                <input type="submit" id="suggestion__send" class="btn horizontal-align spacing-below padding__below" value="send">
             </fieldset>
         </form>
         <section id="map" class="map map--height-large"></section>

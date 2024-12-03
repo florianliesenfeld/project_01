@@ -2,6 +2,10 @@
     margin: var(--gap-large);
 }
 
+.container__small {
+    margin: 0 10vw;
+}
+
 .grid__container__row {
     display: grid;
     grid-template-columns: 1fr;

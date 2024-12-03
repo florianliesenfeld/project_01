@@ -54,6 +54,13 @@ a {
 
 a:hover {
     color: var(--col-main);
+    text-shadow: 0 0 4rem var(--col-main);
+}
+
+/* overrides */
+
+.leaflet-container a {
+    color: var(--col-main);
 }
 
 @media screen and (min-width: 1024px) {

@@ -14,12 +14,14 @@ class Location {
         }
     }
 
+    // function to add a suggested location to the locations array and store it in local storage
     addLocation(location) {
         locations.push(location);
         localStorage.setItem("locationsSerialized", JSON.stringify(locations));
         locationsSerialized.loadData();
     }
 
+    // function is not used yet
     saveData(form) {
         const inputs = form.querySelectorAll("input, textarea, select");
 
@@ -48,28 +50,9 @@ class Location {
         localStorage.setItem("locationsSerialized", JSON.stringify(this.data));
     }
 
+    // function to load data from the local storage
     loadData() {
         locations = JSON.parse(localStorage.getItem("locationsSerialized"));
-        // for (const key in data) {
-        //     if(data.hasOwnProperty(key)) {
-        //         const input = document.querySelector(`#${key}`);
-        //         const inputType = input.getAttribute("type");
-
-        //         switch (inputType) {
-        //             case "radio":
-        //                 if(input.value === data[key]) {
-        //                     input.checked = true;
-        //                 }
-        //                 break;
-        //             case "checkbox":
-        //                 input.checked = true;
-        //                 break;
-        //             default:
-        //                 input.value = data[key];
-        //                 break;
-        //         }
-        //     }
-        // }
     }
 }
 
