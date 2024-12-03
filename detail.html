@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>another travel blog</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <meta name="author" content="Florian Liesenfeld">
+    <meta name="description" content="Another travel blog is a time travel blog. Suggest a new spacetime-coordinate and I will have been travelled to the future for you.">
+    <meta name="keywords" content="travel,blog,future,climate crisis, air pollution, weather isn't climate">
+
+    <meta property="og:title" content="another travel blog">
+    <meta property="og:type" content="website">
+    
     <link rel="stylesheet" href="css/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +28,7 @@
 <body>
     <header class="navbar">
         <a href="index.html">
-            <img src="images/sphere_08.png" id="logo__img" alt="" class="gallery_item">
+            <img src="images/sphere_08.png" id="logo__img" alt="">
         </a>
         <nav>
             <ul>
@@ -36,22 +44,11 @@
             <p id="heading__date" class="horizontal-align vert-spacing">date</p>
         </section>
 
-        <section class="main-carousel" data-flickity='{ "wrapAround": true }'>
-            <!-- <div class="carousel-cell">
-                <img class="carousel-image" src="images/travelBlog_Damascus_01.jpg" alt="">
-            </div>
-            <div class="carousel-cell">
-                <img class="carousel-image" src="images/travelBlog_Damascus_02.jpg" alt="">
-            </div>
-            <div class="carousel-cell">
-                <img class="carousel-image" src="images/travelBlog_Damascus_03.jpg" alt="">
-            </div>
-            <div class="carousel-cell">
-                <img class="carousel-image" src="images/travelBlog_Damascus_04.jpg" alt="">
-            </div>
-            <div class="carousel-cell">
-                <img class="carousel-image" src="images/travelBlog_Damascus_01_thumb.jpg" alt="">
-            </div> -->
+        <section class="carousel" data-flickity='{ "wrapAround": true }'>
+                <img class="carousel-cell" src="images/travelBlog_Damascus_01.jpg" alt="" width="150px", height="100px">
+                <img class="carousel-cell" src="images/travelBlog_Damascus_02.jpg" alt=""width="150px", height="100px">
+                <img class="carousel-cell" src="images/travelBlog_Damascus_03.jpg" alt=""width="150px", height="100px">
+                <img class="carousel-cell" src="images/travelBlog_Damascus_04.jpg" alt=""width="150px", height="100px">
         </section>
 
         <section id="map" class="map map--height-medium vert-spacing"></section>
@@ -115,8 +112,9 @@
     <script src="js/locations.js"></script>
     <script src="js/script.js"></script>
     <script src="js/keys.js"></script>
+    <script src="js/weatherApi.js"></script>
     <script src="js/detail.js"></script>
-    <script src="js/gallery.js"></script>
+    <script src="js/carousel.js"></script>
     <script src="js/map.js"></script>
 </body>
 </html>

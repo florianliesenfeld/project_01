@@ -24,18 +24,23 @@
 }
 
 #logo__img {
-    max-width: 80px;
-    max-height: 50px;
+    max-width: 100px;
+    max-height: 80px;
+}
+
+#logo__img:hover {
+    
 }
 
 .location__navigation nav a {
     font-family: var(--font-secondary);
+    font-size: var(--gap-large);
     font-weight: 700;
 }
 
 @media screen and (min-width: 1024px) {
     #logo__img {
-        max-width: 80px;
-        max-height: 80px;
+        max-width: 120px;
+        max-height: 120px;
     }
 }

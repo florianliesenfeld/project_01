@@ -10,3 +10,7 @@
 .map--height-medium {
     height: 40vh;
 }
+
+.map--height-large {
+    height: 60vh;
+}

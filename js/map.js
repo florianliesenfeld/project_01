@@ -27,11 +27,7 @@ function createMarker(overview) {
 }
 
 // function to determine the current page and calling the creatiion of the corresponding maps and markers
-function getCurrentPage() {
-    let currentPath = location.pathname.split("/");
-    let currentPage = currentPath[currentPath.length-1];
-    currentPage = currentPage.split(".")[0];
-
+function getCurrentMap() {
     switch (currentPage) {
         case "index":
             createMap(32, 15, 3, "stamen_toner_background");
@@ -52,4 +48,4 @@ function getCurrentPage() {
     }
 }
 
-getCurrentPage();
+getCurrentMap();

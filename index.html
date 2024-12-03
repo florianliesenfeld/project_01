@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>another travel blog</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <meta name="author" content="Florian Liesenfeld">
+    <meta name="description" content="Another travel blog is a time travel blog. Suggest a new spacetime-coordinate and I will have been travelled to the future for you.">
+    <meta name="keywords" content="travel,blog,future,climate crisis, air pollution, weather isn't climate">
+
+    <meta property="og:title" content="another travel blog">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +19,9 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script type="text/javascript" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -37,9 +48,9 @@
             <p>I'll have been travelled to the future for you and it does look grim.</p>
         </section>
 
-        <section class="carousel vert-spacing">
+        <section class="vert-spacing">
             <h2 class="heading__center vert-spacing">recent locations</h2>
-            <ul></ul>
+            <div class="carousel" data-flickity='{ "wrapAround": true }'></div>
         </section>
 
         <section id="map" class="map vert-spacing"></section>

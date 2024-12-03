@@ -1,38 +1,69 @@
-.carousel {
-}
-
-.carousel ul {
-    display: flex;
-    justify-content: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    margin: var(--gap-small);
-    gap: var(--gap-small);
-    /* Firefox */
-    /* scrollbar-width: none;   */
-}
-
-.carousel li {
-    /* margin: var(--gap-small); */
-    flex: 0 0 auto;
-}
-
-.carousel li a:hover img {
-    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
+/* custom styles for flickity */
+.carousel-cell {
+    /* width: 66%; */
+    /* height: 200px; */
+    margin-right: var(--gap-small);
+    /* background: #8C8; */
+    counter-increment: carousel-cell;
 }
 
 .carousel img {
-    height: 8rem;
-    object-fit:cover;
+    display: block;
+    height: 224px;
+    /* width: 14rem; */
+    /* set min-width,
+        allow images to determine cell width */
+    /* min-width: 150px; */
+    /* max-width: 100%; */
+    /* vertically center */
+    /* top: 50%; */
+    /* transform: translateY(-50%) */
+}
+
+/* .carousel.is-fullscreen .carousel-image {
+    height: auto;
+    max-height: 100%;
+} */
+
+/* custom styles */
+.carousel a:hover img {
+    filter: sepia(100%) hue-rotate(268deg) brightness(82%) saturate(67%);
 }
 
 .card {
-    max-width: 12rem;
+    /* max-width: 14rem; */
+    /* max-width: 14rem; */
+    width: 220px;
+
+}
+
+.card__img {
+    /* width: 28rem; */
+    /* object-fit: contain; */
+}
+
+.card__heading {
+    margin: var(--gap-small) 0;
+    font-size: var(--gap-large);
 }
 
 @media screen and (min-width: 1024px) {
     .carousel img {
-        height: 12rem;
+        height: 576px;
+    }
+    .card {
+        width: 576px;
+        /* max-width: 20rem; */
+        /* max-width: 600px; */
+    }
+}
+
+@media screen and (min-width: 3200px) {
+    .carousel img {
+        height: 896px;
+    }
+    .card {
+        width: 896px;
+        /* max-width: 30rem; */
     }
 }

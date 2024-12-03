@@ -5,3 +5,8 @@
     padding: var(--gap-small);
     background-color: var(--col-secondary);
 }
+
+.btn:hover {
+    background-color: var(--col-main);
+    color: var(--col-main-dark);
+}
