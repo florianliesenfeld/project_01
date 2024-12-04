@@ -50,9 +50,29 @@ class Location {
         localStorage.setItem("locationsSerialized", JSON.stringify(this.data));
     }
 
-    // function to load data from the local storage
+    // function to load data from the local
     loadData() {
         locations = JSON.parse(localStorage.getItem("locationsSerialized"));
+        // for (const key in data) {
+        //     if(data.hasOwnProperty(key)) {
+        //         const input = document.querySelector(`#${key}`);
+        //         const inputType = input.getAttribute("type");
+
+        //         switch (inputType) {
+        //             case "radio":
+        //                 if(input.value === data[key]) {
+        //                     input.checked = true;
+        //                 }
+        //                 break;
+        //             case "checkbox":
+        //                 input.checked = true;
+        //                 break;
+        //             default:
+        //                 input.value = data[key];
+        //                 break;
+        //         }
+        //     }
+        // }
     }
 }
 

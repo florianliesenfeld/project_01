@@ -1,13 +1,22 @@
-// function to get the current year and display on the page
+// global function for usage outside of current year
+const today = new Date();
+
+// function to get the current year
 function getCurrentYear() {
+    return today.getFullYear()
+}
+
+// function to set current year on footer and where needed
+function setCurrentYear() {
     let currentYears = document.querySelectorAll(".current-year");
-    const today = new Date();
     
     for(let year of currentYears) {
-        year.textContent = today.getFullYear();
+        year.textContent = getCurrentYear();
     }
 }
-getCurrentYear();
+setCurrentYear();
+
+
 
 // function to get the current page - currentpage is saved as public variable
 function getCurrentPage() {
@@ -16,4 +25,5 @@ function getCurrentPage() {
     currentPage = currentPage.split(".")[0];
     return currentPage;
 }
+// global current page variable
 let currentPage = getCurrentPage();

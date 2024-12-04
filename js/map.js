@@ -4,6 +4,7 @@ let map;
 
 let boxIcon2 = L.icon({
     iconUrl: 'images/marker/atb_marker_bright_06.png',
+    iconRetinaUrl: 'images/marker/atb_marker_bright_06.png',
     iconSize:     [128, 128], // size of the icon
     iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
@@ -11,6 +12,7 @@ let boxIcon2 = L.icon({
 
 let boxIcon = L.icon({
     iconUrl: 'images/marker/atb_marker_dark_03.png',
+    iconRetinaUrl: 'images/marker/atb_marker_dark_03.png',
     iconSize:     [128, 128], // size of the icon
     iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor

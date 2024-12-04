@@ -13,15 +13,13 @@ function createCards() {
                                     </article></a></div>`;
     }
 }
-createCards();
 
 // populate image gallery on detail page
 function populateGallery() {
-    let result = "";
+    ulLocCarousel.innerHTML = "";
     for(let image in locations[locationId].images) {
-        result+= `<div class="carousel-cell"><img src="images/${locations[locationId].images[image]}" alt="images/${locations[locationId].altImages[image]}"></div>`;
+        ulLocCarousel.innerHTML+= `<div class="carousel-cell"><img src="images/${locations[locationId].images[image]}" alt="images/${locations[locationId].altImages[image]}"></div>`;
     }
-    document.querySelector(".carousel").innerHTML = result;
 }
 
 if(currentPage==="detail") {

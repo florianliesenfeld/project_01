@@ -6,13 +6,13 @@ function getUrl(type, locationName) {
             const urlWeather = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
             return url = `${urlWeather}&q=${locations[locationId].location}&appid=${weatherApiKey}`;
         case "pollution":
-            const urlPollution = `http://api.openweathermap.org/data/2.5/air_pollution`;
+            const urlPollution = `https://api.openweathermap.org/data/2.5/air_pollution`;
             return url = `${urlPollution}?lat=${locations[locationId].geoLoc.lat}&lon=${locations[locationId].geoLoc.lon}&appid=${weatherApiKey}`;
         case "geoCoding":
-            const urlGeoCoding = `http://api.openweathermap.org/geo/1.0/direct?limit=1`;
+            const urlGeoCoding = `https://api.openweathermap.org/geo/1.0/direct?limit=1`;
             return url = `${urlGeoCoding}&q=${locations[locationId].location}&appid=${weatherApiKey}`;
         case "geoCodingGeneral":
-            const urlGeoCodingGeneral = `http://api.openweathermap.org/geo/1.0/direct?limit=1`;
+            const urlGeoCodingGeneral = `https://api.openweathermap.org/geo/1.0/direct?limit=1`;
             return url = `${urlGeoCodingGeneral}&q=${locationName}&appid=${weatherApiKey}`;
         default:
             break;
