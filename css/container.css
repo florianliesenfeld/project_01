@@ -1,5 +1,5 @@
 .container__medium {
-    margin: var(--gap-large);
+    margin: var(--gap-medium);
 }
 
 .container__small {
@@ -21,6 +21,12 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .container__medium {
+        margin: var(--gap-large);
+    }
+}
+
+@media screen and (min-width: 1280px) {
     .grid__container__row {
         grid-template-columns: 2fr 1fr;
     }

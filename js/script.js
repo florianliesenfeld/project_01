@@ -16,8 +16,6 @@ function setCurrentYear() {
 }
 setCurrentYear();
 
-
-
 // function to get the current page - currentpage is saved as public variable
 function getCurrentPage() {
     let currentPath = location.pathname.split("/");
