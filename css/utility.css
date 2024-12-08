@@ -55,3 +55,12 @@
 .padding__below {
     padding-bottom: var(--gap-large);
 }
+
+.padding__small {
+    padding: var(--gap-small);
+}
+
+.img-contain {
+    width: 100;
+    object-fit:contain;
+}

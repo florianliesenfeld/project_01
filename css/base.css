@@ -24,11 +24,14 @@ html {
     height: 100%;
 }
 body {
-    /* followed this example to archive sticky footer https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Sticky_footers */
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     overflow-y: scroll;
+}
+
+main {
+    flex-grow: 1;
 }
 
 h1 {
@@ -50,6 +53,10 @@ time {
 }
 a {
     color: var(--col-main-dark);
+}
+
+.a--visible {
+    color: var(--col-main);
 }
 
 a:hover {

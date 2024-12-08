@@ -3,7 +3,7 @@
 }
 
 .container__small {
-    margin: 0 10vw;
+    margin: 0 var(--gap-large);
 }
 
 .grid__container__row {
@@ -23,6 +23,9 @@
 @media screen and (min-width: 1024px) {
     .container__medium {
         margin: var(--gap-large);
+    }
+    .container__small {
+        margin: 0 10vw;
     }
 }
 

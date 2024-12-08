@@ -25,3 +25,29 @@ function getCurrentPage() {
 }
 // global current page variable
 let currentPage = getCurrentPage();
+
+// function to highlight the current page in the navigation
+function highlightNav() {
+    let navItems = document.querySelectorAll(".navbar li a");
+
+    for (let item of navItems) {
+        item.classList.remove("navbar__item__active");
+    }
+    switch (currentPage) {
+        case "suggestlocation":
+            let navSuggest = document.querySelector("#navbar__nav__suggest");
+            navSuggest.classList.add("navbar__item__active")
+            break;
+        case "coords":
+            let navCoords = document.querySelector("#navbar__nav__coords");
+            navCoords.classList.add("navbar__item__active")
+                break;
+        case "about":
+            let navAbout = document.querySelector("#navbar__nav__about");
+            navAbout.classList.add("navbar__item__active")
+            break;
+        default:
+            break;
+    }
+}
+highlightNav();

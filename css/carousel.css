@@ -28,6 +28,11 @@
     /* transform: translateY(-50%) */
 }
 
+.carousel__img {
+    display: block;
+    height: 224px;
+}
+
 /* .carousel.is-fullscreen .carousel-image {
     height: auto;
     max-height: 100%;
@@ -54,6 +59,9 @@ a:hover .card img {
 .card__heading {
     margin: var(--gap-small) 0;
     font-size: var(--gap-large);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and (min-width: 1024px) {

@@ -16,9 +16,8 @@ function createCards() {
 
 // populate image gallery on detail page
 function populateGallery() {
-    ulLocCarousel.innerHTML = "";
     for(let image in locations[locationId].images) {
-        ulLocCarousel.innerHTML+= `<div class="carousel-cell"><img src="images/${locations[locationId].images[image]}" alt="images/${locations[locationId].altImages[image]}"></div>`;
+        ulLocCarousel.innerHTML+= `<div class="carousel-cell"><img class="carousel__img" src="images/${locations[locationId].images[image]}" alt="images/${locations[locationId].altImages[image]}"></div>`;
     }
 }
 

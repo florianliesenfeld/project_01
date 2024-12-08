@@ -14,6 +14,9 @@ function getUrl(type, locationName) {
         case "geoCodingGeneral":
             const urlGeoCodingGeneral = `https://api.openweathermap.org/geo/1.0/direct?limit=1`;
             return url = `${urlGeoCodingGeneral}&q=${locationName}&appid=${weatherApiKey}`;
+        case "geoCodingReverse":
+            const urlGeoCodingReverse = `https://api.openweathermap.org/geo/1.0/reverse?limit=1`;
+            return url = `${urlGeoCodingReverse}&lat=${locationName[0]}&lon=${locationName[1]}&appid=${weatherApiKey}`;
         default:
             break;
     }
@@ -47,10 +50,8 @@ async function getCoordinates(type, location) {
             // if(!data.ok) {
             //     throw new Error(`Response status: ${data.status}`)
             // }
-            // console.log(data[0].lat,data[0].lon);
-
             map.setView([data[0].lat,data[0].lon], 10);
-            L.marker([data[0].lat, data[0].lon], {icon: boxIcon}).addTo(map);
+            createSuggestionMarker([data[0].lat, data[0].lon]);
             // return data;
 
         } catch (error) {
@@ -60,4 +61,17 @@ async function getCoordinates(type, location) {
      } else {
         console.log("no location input");
      } 
+}
+
+// async function to get the location name from placing marker on the map
+async function getLocation(type, location) {
+    try {
+        let data = await getData(getUrl(type, location), "");
+        // if(!data.ok) {
+        //     throw new Error(`Response status: ${data.status}`)
+        // }
+        elSuggestionLocation.value = data[0].name;
+    } catch (error) {
+        console.error(error.message);
+    }
 }

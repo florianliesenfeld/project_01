@@ -9,6 +9,7 @@ let elModal = document.querySelector("#modal");
 let elBnModalClose = document.querySelector("#modal__close");
 
 let currentSuggestionLocation;
+let suggestionMarker = {};
 
 // function to set the current date
 function setCurrentDate() {
@@ -110,10 +111,27 @@ elBnModalClose.addEventListener("click", function() {
     elSuggestionLocation.focus();
 });
 
-
 // event listener to update map view to location entered in form - triggered when input field looses focus
 elSuggestionLocation.addEventListener("focusout", function() {
     currentSuggestionLocation = getCoordinates("geoCodingGeneral", elSuggestionLocation.value);
+});
+
+// function for creating Markers and adding it to the map, Marker Positions are saved in the locations Array
+function createSuggestionMarker(latLon) {
+    if(suggestionMarker != undefined) {
+        map.removeLayer(suggestionMarker);
+    }
+    suggestionMarker = L.marker([latLon[0], latLon[1]], {icon: boxIcon}).on("mouseover", function() {
+        this.setIcon(boxIcon2);
+    }).on("mouseout", function() {
+        this.setIcon(boxIcon);
+    }).addTo(map);
+    getLocation("geoCodingReverse", latLon);
+}
+
+map.on("click", function(e) {
+    latLon = [e.latlng.lat,e.latlng.lng];
+    createSuggestionMarker(latLon);
 });
 
 setCurrentDate();

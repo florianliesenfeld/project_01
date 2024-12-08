@@ -29,6 +29,14 @@
     /* text-shadow: 0px 0px 5px white; */
 }
 
+.navbar__item__active {
+    color: var(--col-main);
+}
+
+/* .navbar__item__inactive {
+    color: black;
+} */
+
 #logo__img {
     max-width: 60px;
     max-height: 60px;
