@@ -2,6 +2,7 @@ const locationsOffline = [
     {
         id: 0,
         location: "Damascus",
+        country: "Syria",
         geoLoc: {lat: 33.513229131401154, lon: 36.276832308243854},
         period: {start: "2043-02-23", end: "2043-02-25"},
         places: [{lat: 33.511373686074556, lon: 36.30689980504887}],
@@ -23,6 +24,7 @@ const locationsOffline = [
     {
         id: 1,
         location: "Paris",
+        country: "France",
         geoLoc: {lat: 48.85754657470296, lon: 2.3513719627048615},
         period: {start: "2058-06-07", end: "2058-06-07"},
         places: [{lat: 48.85826370182144, lon: 2.294501153650173}],
@@ -44,6 +46,7 @@ const locationsOffline = [
     {
         id: 2,
         location: "Abuja",
+        country: "Nigeria",
         geoLoc: {lat: 9.056272572547446, lon: 7.4985246666398915},
         period: {start: "2064-12-15", end: "2064-12-16"},
         places: [{lat: 9.06026540993329, lon: 7.4898644477909695}],
@@ -65,6 +68,7 @@ const locationsOffline = [
     {
         id: 3,
         location: "Berlin",
+        country: "Germany",
         geoLoc: {lat: 52.52000587310054,lon: 13.404946669381067},
         period: {start: "2084-04-13", end: "2084-04-17"},
         places: [{lat:52.51628214532544, lon: 13.377727090554865}],

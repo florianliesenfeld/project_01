@@ -1,5 +1,6 @@
 // class for storing data in local storage
 let locations;
+let databaseVersion = 0.1;
 
 class Location {
     constructor() {
@@ -8,8 +9,14 @@ class Location {
 
     // function to store the offline data into the local storage - only executed once
     initializeLocalStorage() {
-        if(!JSON.parse(localStorage.getItem("initialized"))) {
+        if(JSON.parse(localStorage.getItem("databaseVersion")) < databaseVersion) {
+            console.log("does not exists");
             localStorage.setItem("locationsSerialized", JSON.stringify(locationsOffline));
+            localStorage.setItem("databaseVersion", JSON.stringify(databaseVersion));
+        }
+        // has lost function due to versioning
+        if(!JSON.parse(localStorage.getItem("initialized"))) {
+            // localStorage.setItem("locationsSerialized", JSON.stringify(locationsOffline));
             localStorage.setItem("initialized",JSON.stringify(true));
         }
     }
@@ -19,6 +26,7 @@ class Location {
         locations.push(location);
         localStorage.setItem("locationsSerialized", JSON.stringify(locations));
         locationsSerialized.loadData();
+        resetInput();
     }
 
     // function is not used yet
@@ -42,7 +50,6 @@ class Location {
                     value = input.value;
                     break;
             }
-
             if(value !== undefined) {
                 this.data[input.id] = value;
             }

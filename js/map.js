@@ -22,7 +22,6 @@ let boxIcon = L.icon({
 // function for creating a based on the parameters lat,lon,zoom and mapUrl
 function createMap(lat,lon,zoom, mapUrl) {
     map = L.map('map').setView([lat, lon], zoom);
-    // Style URL format in XYZ PNG format; see our documentation for more options
     L.tileLayer(`https://tiles.stadiamaps.com/tiles/${mapUrl}/{z}/{x}/{y}{r}.png`, {
         maxZoom: 20,
         minZoom: 2,

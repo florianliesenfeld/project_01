@@ -2,7 +2,10 @@
 function getUrl(type, locationName) {
     let url = "";
     switch (type) {
-        case "weather":
+        case "weatherByCoords":
+            const urlWeatherCoords = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
+            return url = `${urlWeatherCoords}&lat=${locations[locationId].geoLoc.lat}&lon=${locations[locationId].geoLoc.lon}&appid=${weatherApiKey}`;
+        case "weatherByName":
             const urlWeather = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
             return url = `${urlWeather}&q=${locations[locationId].location}&appid=${weatherApiKey}`;
         case "pollution":
@@ -50,10 +53,9 @@ async function getCoordinates(type, location) {
             // if(!data.ok) {
             //     throw new Error(`Response status: ${data.status}`)
             // }
+            currentSuggestionCoord = [data[0].lat,data[0].lon];
             map.setView([data[0].lat,data[0].lon], 10);
             createSuggestionMarker([data[0].lat, data[0].lon]);
-            // return data;
-
         } catch (error) {
             console.error(error.message);
         }
@@ -67,11 +69,30 @@ async function getCoordinates(type, location) {
 async function getLocation(type, location) {
     try {
         let data = await getData(getUrl(type, location), "");
-        // if(!data.ok) {
-        //     throw new Error(`Response status: ${data.status}`)
-        // }
-        elSuggestionLocation.value = data[0].name;
+        if(data.length > 0) {
+            elSuggestionLocation.value = data[0].name;
+        } else {
+            showError("please choose an existing place, sorry for the limitations!");
+        }
     } catch (error) {
         console.error(error.message);
     }
+}
+
+// async function to validate the location entered in the suggestion form
+async function validateLocation(type, location) {
+    if(elSuggestionLocation.value !== "" ) {
+        try {
+            let data = await getData(getUrl(type, location), "");
+            if(data.length > 0) {
+                locationsSerialized.addLocation(createLocationObject(data));
+            } else {
+                showError("please enter a valid destination");
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+     } else {
+        console.log("no location input");
+     } 
 }

@@ -50,6 +50,9 @@
     font-family: var(--font-secondary);
     font-size: var(--gap-medium);
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and (min-width: 1024px) {

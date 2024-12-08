@@ -8,8 +8,6 @@ const locationId = searchParams.get("id");
 
 // function to set the navigation in the bootom of the page to previous and next location
 function navigateLocations() {
-    
-
     const locationPrevious = document.querySelector("#location__previous");
     const locationNext = document.querySelector("#location__next");
 
@@ -32,9 +30,10 @@ function populate() {
     document.title = `another travel blog | ${locations[locationId].location}`;
 
     document.querySelector("#heading__main").textContent = locations[locationId].location;
+    document.querySelector("#heading__sub").textContent = locations[locationId].country;
     document.querySelector("#heading__date").textContent = `${locations[locationId].period.start} to ${locations[locationId].period.end}`;
 
-    document.querySelector("#text__heading").textContent = locations[locationId].location;
+    document.querySelector("#text__heading").innerHTML = `${locations[locationId].location} | ${locations[locationId].country}`;
     document.querySelector("#text__reason").textContent = locations[locationId].reason;
     document.querySelector("#text__body").textContent = locations[locationId].textBody;
     document.querySelector("#text-credits").innerHTML = locations[locationId].credits;
@@ -44,7 +43,12 @@ function populate() {
 // function to draw the weather, pollution and location data
 function drawData(data, type) {
     switch (type) {
-        case "weather":
+        case "weatherByCoords":
+            document.querySelector("#weather__icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+            document.querySelector("#weather__temp").textContent = `${Math.round(data.main.temp)} °C`;
+            document.querySelector("#weather__description").textContent = data.weather[0].description;  
+            break;
+        case "weatherByName":
             document.querySelector("#weather__icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
             document.querySelector("#weather__temp").textContent = `${Math.round(data.main.temp)} °C`;
             document.querySelector("#weather__description").textContent = data.weather[0].description;  
@@ -53,19 +57,11 @@ function drawData(data, type) {
             document.querySelector("#pollution__aqi").textContent = `${data.list[0].main.aqi}`;
             document.querySelector("#pollution__component").textContent = `${data.list[0].components.pm2_5}`;
             break;
-        case "geoCoding":
-            const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
-            const regionName = regionNamesInEnglish.of(data[0].country);
-
-            document.querySelector("#heading__sub").textContent = regionName;
-            document.querySelector("#text__heading").innerHTML = `${locations[locationId].location} | ${regionName}`;
-            break;
         default:
             break;
     }    
 }
 
 populate();
-getData(getUrl("geoCoding", "null"), "geoCoding");
-getData(getUrl("weather", "null"), "weather");
+getData(getUrl("weatherByCoords", "null"), "weatherByCoords");
 getData(getUrl("pollution", "null"), "pollution");

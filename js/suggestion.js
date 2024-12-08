@@ -2,7 +2,7 @@
 
 let fSuggestion = document.querySelector("#suggestion");
 let elBtSuggestion = document.querySelector("#suggestion__send");
-let elSuggestionLocation = document.querySelector("#suggestion__location");
+let elSuggestionLocation = document.querySelector("#suggestion__location")
 let elSuggestionDate = document.querySelector("#suggestion__date");
 let elSuggestionReason = document.querySelector("#suggestion__reason");
 let elModal = document.querySelector("#modal");
@@ -10,6 +10,7 @@ let elBnModalClose = document.querySelector("#modal__close");
 
 let currentSuggestionLocation;
 let suggestionMarker = {};
+let currentSuggestionCoord;
 
 // function to set the current date
 function setCurrentDate() {
@@ -26,9 +27,9 @@ function confirmSuggestion(location, date, reason) {
 }
 
 // function to show modal with error
-function showError() {
+function showError(bodyText) {
     document.querySelector("#modal h2").textContent = "error";
-    document.querySelector("#modal p").innerHTML = "please enter a destination and a reason";
+    document.querySelector("#modal p").innerHTML = bodyText;
     elModal.showModal();
 }
 
@@ -57,14 +58,23 @@ function createRandomDate(startDate, range) {
     return date.toISOString().split("T")[0]
 }
 
+// function to convert regionCodes into names
+function convertRegionName(region) {
+    const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
+    const regionName = regionNamesInEnglish.of(region);
+    return regionName;
+}
+
+// rewrite to proper async logic
 // function to create the location object of the suggested location
-function createLocationObject() {
+function createLocationObject(data) {
 const locationToAdd = {
     id: locations.length,
     location: elSuggestionLocation.value,
-    geoLoc: {lat: 33.513229131401154, lon: 36.276832308243854},
+    country: convertRegionName(data[0].country),
+    geoLoc: {lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]},
     period: {start: elSuggestionDate.value, end: createRandomDate(elSuggestionDate.value, 7)},
-    places: [{lat: 33.511373686074556, lon: 36.30689980504887}],
+    places: [{lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]}],
     thumbnail: {thumb: "atb_logo_13_blackbg.jpg",
                 alt: "white glowing cube in front of dark background"},
     images: ["atb_placeholder.jpg",
@@ -88,6 +98,13 @@ const locationToAdd = {
 return locationToAdd;
 }
 
+// function to reset the input fields
+function resetInput() {
+    elSuggestionLocation.value = "";
+    elSuggestionDate.value = today.toISOString().split("T")[0];
+    elSuggestionReason.value = "";
+}
+
 // event listener to send form
 elBtSuggestion.addEventListener("click", function(e) {
     e.preventDefault();
@@ -95,13 +112,12 @@ elBtSuggestion.addEventListener("click", function(e) {
     let date = elSuggestionDate.value;
     let reason = elSuggestionReason.value;
     if(location !== "" && date !== "" && reason !== "") {
+        // async validate location -> get country, coordinates
+        //validateLocation("geoCodingGeneral", location);
+        validateLocation("geoCodingReverse", currentSuggestionCoord);
         confirmSuggestion(location, date, reason);
-        locationsSerialized.addLocation(createLocationObject());
-        elSuggestionLocation.value = "";
-        elSuggestionDate.value = today.toISOString().split("T")[0];
-        elSuggestionReason.value = "";
     } else {
-        showError();
+        showError("please enter a destination and a reason");
     }
 });
 
@@ -129,8 +145,10 @@ function createSuggestionMarker(latLon) {
     getLocation("geoCodingReverse", latLon);
 }
 
+// build-in eventlistener on map click event to place marker
 map.on("click", function(e) {
     latLon = [e.latlng.lat,e.latlng.lng];
+    currentSuggestionCoord = [e.latlng.lat,e.latlng.lng];
     createSuggestionMarker(latLon);
 });
 
