@@ -2,7 +2,7 @@
     --font-main: "Comfortaa", sans-serif;
     --font-secondary: "DM Mono", monospace;
 
-    --col-main: #a666f0;
+    --col-main: hsl(268, 82%, 67%);
     --col-main-dark: #000000;
     --col-secondary: #eeeeee;
     --col-background: #ffffff;
@@ -61,7 +61,7 @@ a {
 
 a:hover {
     color: var(--col-main);
-    text-shadow: 0 0 4rem var(--col-main);
+    text-shadow: 0 0 1rem var(--col-main);
 }
 
 /* overrides */

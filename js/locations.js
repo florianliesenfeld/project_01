@@ -17,7 +17,7 @@ const locationsOffline = [
                     "grainy high contrast monochrome rendering of the inner courtyard of Umayyad Mosque in Damascus",
                     "grainy high contrast monochrome rendering of the Umayyad Mosque in Damascus"],
         credits: ["3D model by MiniWorld3D <a href='https://www.printables.com/model/519393-great-mosque-of-damascus-syria/files' target='_blank'>[printables]</a>"],
-        reason: "Syria is one of the 10 countries most affected by the man made climate change.",
+        reason: "Syria is one of the 10 countries most affected by the climate breakdown.",
         textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
         suggested: false
     },
@@ -61,7 +61,7 @@ const locationsOffline = [
                     "grainy monochrome rendering of the Abuja National Mosque in Abuja",
                     "grainy monochrome rendering of the Abuja National Mosque in Abuja"],
         credits: ["3D model by MiniWorld3d <a href='https://www.printables.com/model/664805-abuja-national-mosque-nigeria/files' target='_blank'>[printables]</a>"],
-        reason: "Nigeria is one of the 10 countries most affected by the man made climate change.",
+        reason: "Nigeria is one of the 10 countries most affected by the climate breakdown.",
         textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem perferendis dolor numquam similique adipisci odit? Quo ducimus quia alias quisquam omnis? Mollitia quo quia, recusandae deserunt repellat impedit consequatur quae!",
         suggested: false
     },

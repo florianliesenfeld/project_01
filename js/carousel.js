@@ -77,16 +77,15 @@ function populateGallery() {
     // flkty.reloadCells();
 }
 
-
 function makeCellImgSuggestion(image) {
     let cell = document.createElement('div');
     cell.className = 'carousel-cell';
     let cellImg = document.createElement('img');
     cellImg.className = 'carousel__img carousel__img--suggested';
     cellImg.src = `${suggestedImages[image][0]}`;
-    cellImg.alt = `${suggestedImages[image][1]}`;
+    // cellImg.alt = `${suggestedImages[image][1]}`;
     cell.appendChild(cellImg);
-    
+
     let cellImgOverlay = document.createElement('div');
     cellImgOverlay.className= 'noise';
     cell.appendChild(cellImgOverlay);
