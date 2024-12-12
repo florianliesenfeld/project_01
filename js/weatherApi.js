@@ -79,6 +79,30 @@ async function getLocation(type, location) {
     }
 }
 
+// async function to get the location name from placing marker on the map
+async function getRandomLocation(type) {
+    let i=0;
+    let validCoordinates = false;
+    while(!validCoordinates) {
+        try {
+            let location = createRandomCoordinates();
+            let data = await getData(getUrl(type, location), "");
+            i++;
+            // console.log(i);
+            if(data.length > 0) {
+                validCoordinates = true;
+                elSuggestionLocation.value = data[0].name;
+                map.setView([location[0],location[1]], 6);
+                currentSuggestionCoord = location;
+                createSuggestionMarker(location);
+                elSuggestionDate.value = createRandomDate(today.toISOString().split("T")[0], 738760)
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+}
+
 // async function to validate the location entered in the suggestion form
 async function validateLocation(type, location) {
     if(elSuggestionLocation.value !== "" ) {

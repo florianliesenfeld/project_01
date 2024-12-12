@@ -18,8 +18,11 @@ async function getImages(url) {
             throw new Error(`Response status: ${response.status}`)
         }
         const data = await response.json();
-        for(entry in data.hits) {
-            suggestedImages.push([data.hits[entry].webformatURL,data.hits[entry].pageURL]);
+        if(data.hits.length > 0) {
+            for(entry in data.hits) {
+
+                suggestedImages.push([data.hits[entry].webformatURL,data.hits[entry].pageURL]);
+            }
         }
         if(locations[locationId].suggested) {
             populateGallerySuggestion();

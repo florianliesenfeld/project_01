@@ -56,6 +56,10 @@
     padding-bottom: var(--gap-large);
 }
 
+.padding__below__small {
+    padding-bottom: var(--gap-small);
+}
+
 .padding__small {
     padding: var(--gap-small);
 }
@@ -63,4 +67,10 @@
 .img-contain {
     width: 100;
     object-fit:contain;
+}
+
+.flex__row__right {
+    display: flex;
+    justify-content: end;
+    gap: var(--gap-small);
 }

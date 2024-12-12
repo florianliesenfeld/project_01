@@ -82,7 +82,11 @@ function makeCellImgSuggestion(image) {
     cell.className = 'carousel-cell';
     let cellImg = document.createElement('img');
     cellImg.className = 'carousel__img carousel__img--suggested';
-    cellImg.src = `${suggestedImages[image][0]}`;
+    if(image >= suggestedImages.length) {
+        cellImg.src = "images/atb_placeholder.jpg";
+    } else {
+        cellImg.src = `${suggestedImages[image][0]}`;
+    }
     // cellImg.alt = `${suggestedImages[image][1]}`;
     cell.appendChild(cellImg);
 
@@ -93,15 +97,14 @@ function makeCellImgSuggestion(image) {
 }
 
 function populateGallerySuggestion() {
+    let imageLength = suggestedImages.length
     // ulLocCarousel.innerHTML = "";
     let elementsToAdd = [];
-    for(let image in suggestedImages) {
-        elementsToAdd.push(makeCellImgSuggestion(image));
-
-        // flkty.append(suggestedImages[image][0]);
-        // ulLocCarousel.innerHTML+= `<div class="carousel-cell"><img class="carousel__img carousel__img--suggested" src="${suggestedImages[image][0]}" alt="${suggestedImages[image][1]}" height="224px"></div>`;
+    imageLength < 5 ? imageLength=5 : imageLength;
+    for(let i=0;i<imageLength;i++) {
+        elementsToAdd.push(makeCellImgSuggestion(i));
     }
-    console.log(elementsToAdd);
+    // console.log(elementsToAdd);
     flkty.append(elementsToAdd);
 
 }

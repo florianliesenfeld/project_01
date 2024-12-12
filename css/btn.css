@@ -6,6 +6,24 @@
     background-color: var(--col-main-dark);
 }
 
+.btn--main {
+    background-color: var(--col-main-dark);
+    color: var(--col-main);
+}
+
+.btn--secondary {
+    color: var(--col-background);
+
+}
+
+.btn__hide {
+    display: none;
+}
+
+.btn__show {
+    display: block;
+}
+
 .btn:hover {
     background-color: var(--col-main-dark);
     color: var(--col-main);

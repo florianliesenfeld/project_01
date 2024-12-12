@@ -7,6 +7,8 @@ let elSuggestionDate = document.querySelector("#suggestion__date");
 let elSuggestionReason = document.querySelector("#suggestion__reason");
 let elModal = document.querySelector("#modal");
 let elBnModalClose = document.querySelector("#modal__close");
+let elBnModalAction = document.querySelector("#modal__action");
+let elBnSuggestionRandom = document.querySelector("#suggestion__random");
 
 let currentSuggestionLocation;
 let suggestionMarker = {};
@@ -23,6 +25,7 @@ function setCurrentDate() {
 function confirmSuggestion(location, date, reason) {
     document.querySelector("#modal h2").textContent = "thanks";
     document.querySelector("#modal p").innerHTML = `for suggesting <span id="modal__location">${location}</span> on the <span id="modal__date">${date}</span> because <span id="modal__reason">${reason}</span>`;
+    document.querySelector("#modal__action").classList.add("btn__show");
     elModal.showModal();
 }
 
@@ -83,12 +86,12 @@ const locationToAdd = {
             "atb_placeholder.jpg",
             "atb_placeholder.jpg",
             "atb_placeholder.jpg"],
-    altImages:  ["",
-                "",
-                "",
-                "",
-                "",
-                ""],
+    altImages:  ["white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background"],
     credits: [`Location ${elSuggestionLocation.value} was suggested by user.<p>Do you want to make a suggestion as well? <a href='suggestlocation.html'>[click here]</a></p>`],
     reason: elSuggestionReason.value,
     textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
@@ -121,10 +124,34 @@ elBtSuggestion.addEventListener("click", function(e) {
     }
 });
 
+// function to create a random latLon pair
+function createRandomCoordinates() {
+    let lat = Math.round((Math.random()*360-180)*100000)/100000;
+    let lon = Math.round((Math.random()*180-90)*100000)/100000;
+    // console.log(lat, lon);
+    return [lat,lon];
+}
+
+// event listener to create random location
+elBnSuggestionRandom.addEventListener("click", function(e) {
+    e.preventDefault();
+    getRandomLocation("geoCodingReverse");
+});
+
 // event listener to close the modal
 elBnModalClose.addEventListener("click", function() {
+    document.querySelector("#modal__action").classList.remove("btn__show");
     elModal.close();
     elSuggestionLocation.focus();
+});
+
+
+// event listener to go to detail page
+elBnModalAction.addEventListener("click", function() {
+    document.querySelector("#modal__action").classList.remove("btn__show");
+    elModal.close();
+    elSuggestionLocation.focus();
+    window.location.href=`detail.html?id=${locations[locations.length-1].id}`;
 });
 
 // event listener to update map view to location entered in form - triggered when input field looses focus

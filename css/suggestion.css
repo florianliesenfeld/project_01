@@ -1,11 +1,26 @@
 #suggestion {
     display: flex;
     justify-content: center;
-    margin: 0 0 var(--gap-medium) 0;
+    /* margin: 0 0 var(--gap-small) 0; */
 }
 
 #suggestion__fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#suggestion__location {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion__flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+#suggestion__random {
+    cursor: pointer;
 }
