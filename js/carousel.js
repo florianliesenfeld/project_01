@@ -1,14 +1,13 @@
 // create cards based of the location data in location.js and display them inside a carousel 
 // and populate the locations in the overview in the
 let ulLocCarousel = document.querySelector(".carousel");
-let suggestedImages = [];
 
+// create ne flickity carousel
 var flkty = new Flickity( ulLocCarousel, {
-  // options
   wrapAround: true
-//   cellAlign: 'left',
 });
 
+// function to create card
 function makeCard(entry) {
     let card = document.createElement('div');
     card.className = 'carousel-cell';
@@ -45,16 +44,11 @@ function createCards() {
     let elementsToAdd = [];
     for (let entry in locations) {
         elementsToAdd.push(makeCard(entry));
-        // ulLocCarousel.innerHTML+=   `<div class="carousel-cell"><a href="detail.html?id=${locations[entry].id}">
-        //                             <article class="card">
-        //                             <img class="card__img" src="images/${locations[entry].thumbnail.thumb}" alt="${locations[entry].thumbnail.alt}">
-        //                             <h3 class="card__heading">${locations[entry].location}</h3>
-        //                             <time datetime="${locations[entry].period.start}">${locations[entry].period.start}</time>
-        //                             </article></a></div>`;
     }
     flkty.append(elementsToAdd);
 }
 
+// function to create an cell image of offline images to display inside carousel
 function makeCellImg(image) {
     let cell = document.createElement('div');
     cell.className = 'carousel-cell';
@@ -72,11 +66,10 @@ function populateGallery() {
     for(let image in locations[locationId].images) {
         elementsToAdd.push(makeCellImg(image));
     }
-    // console.log(elementsToAdd);
     flkty.append(elementsToAdd);
-    // flkty.reloadCells();
 }
 
+// function to create an cell image of online images to display inside carousel
 function makeCellImgSuggestion(image) {
     let cell = document.createElement('div');
     cell.className = 'carousel-cell';
@@ -87,7 +80,6 @@ function makeCellImgSuggestion(image) {
     } else {
         cellImg.src = `${suggestedImages[image][0]}`;
     }
-    // cellImg.alt = `${suggestedImages[image][1]}`;
     cell.appendChild(cellImg);
 
     let cellImgOverlay = document.createElement('div');
@@ -96,19 +88,18 @@ function makeCellImgSuggestion(image) {
     return cell;
 }
 
-function populateGallerySuggestion() {
+// function to populate online images into carousel
+async function populateGallerySuggestion() {
     let imageLength = suggestedImages.length
-    // ulLocCarousel.innerHTML = "";
     let elementsToAdd = [];
     imageLength < 5 ? imageLength=5 : imageLength;
     for(let i=0;i<imageLength;i++) {
         elementsToAdd.push(makeCellImgSuggestion(i));
     }
-    // console.log(elementsToAdd);
     flkty.append(elementsToAdd);
-
 }
 
+// inital functions on load depending on page
 if(currentPage==="detail") {
     if(!locations[locationId].suggested) {
         populateGallery();

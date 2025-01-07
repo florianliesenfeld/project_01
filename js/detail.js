@@ -2,6 +2,7 @@
 // put key in row below and uncomment
 // const weatherApiKey = "";
 
+let suggestedImages = [];
 // global variable of locatonId used in multiple scripts
 const searchParams = new URLSearchParams(location.search);
 const locationId = searchParams.get("id");
@@ -10,33 +11,37 @@ const locationId = searchParams.get("id");
 function navigateLocations() {
     const locationPrevious = document.querySelector("#location__previous");
     const locationNext = document.querySelector("#location__next");
-
     // get idTogoTo by adding either 1 or #ofLocations-1 and taking the modulo to stay within Array boundaries
     let idPrevious = (Number(locationId)+(locations.length-1)) % (locations.length);
     let idNext = (Number(locationId)+1) % (locations.length);
-
     // set href and the name of previous Location 
     locationPrevious.setAttribute("href", `detail.html?id=${locations[idPrevious].id}`);
     locationPrevious.innerHTML = `&#10229; ${locations[idPrevious].location}`;
-    
     // set href and the name of next Location
     locationNext.innerHTML = `${locations[idNext].location} &#10230;`;
     locationNext.setAttribute("href", `detail.html?id=${locations[idNext].id}`);
 }
 
+// function to add credits to images
+function addCredits() {
+    let imageCredits = document.querySelector(".image__credits");
+    if(locations[locationId].suggested) {
+        imageCredits.innerHTML = `images by pixabay - sorry their API doesn't provide alt text`
+    }
+}
+
 // function to populate detail page with information from the locations.js file
-function populate() {
+function populateDetails() {
     // change document title to current location
     document.title = `another travel blog | ${locations[locationId].location}`;
-
     document.querySelector("#heading__main").textContent = locations[locationId].location;
     document.querySelector("#heading__sub").textContent = locations[locationId].country;
     document.querySelector("#heading__date").textContent = `${locations[locationId].period.start} to ${locations[locationId].period.end}`;
-
     document.querySelector("#text__heading").innerHTML = `${locations[locationId].location} | ${locations[locationId].country}`;
     document.querySelector("#text__reason").textContent = locations[locationId].reason;
     document.querySelector("#text__body").textContent = locations[locationId].textBody;
     document.querySelector("#text-credits").innerHTML = locations[locationId].credits;
+    addCredits();
     navigateLocations();
 }
 
@@ -44,11 +49,6 @@ function populate() {
 function drawData(data, type) {
     switch (type) {
         case "weatherByCoords":
-            document.querySelector("#weather__icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-            document.querySelector("#weather__temp").textContent = `${Math.round(data.main.temp)} °C`;
-            document.querySelector("#weather__description").textContent = data.weather[0].description;  
-            break;
-        case "weatherByName":
             document.querySelector("#weather__icon").setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
             document.querySelector("#weather__temp").textContent = `${Math.round(data.main.temp)} °C`;
             document.querySelector("#weather__description").textContent = data.weather[0].description;  
@@ -62,6 +62,6 @@ function drawData(data, type) {
     }    
 }
 
-populate();
+populateDetails();
 getData(getUrl("weatherByCoords", "null"), "weatherByCoords");
 getData(getUrl("pollution", "null"), "pollution");

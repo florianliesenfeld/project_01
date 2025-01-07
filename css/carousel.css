@@ -96,6 +96,12 @@ a:hover .card img {
     text-overflow: ellipsis;
 }
 
+.image__credits {
+    font-size: var(--gap-medium);
+    margin: var(--gap-large) var(--gap-medium) 0 0;
+    text-align: end;
+}
+
 @media screen and (min-width: 1024px) {
     .carousel {
         height: 576px;
@@ -111,6 +117,9 @@ a:hover .card img {
         width: 576px;
         /* max-width: 20rem; */
         /* max-width: 600px; */
+    }
+    .image__credits {
+        font-size: var(--gap-small);
     }
 }
 

@@ -1,7 +1,7 @@
 // get form data about travel suggestion
 
 let fSuggestion = document.querySelector("#suggestion");
-let elBnSuggestion = document.querySelector("#suggestion__send");
+let elBtSuggestion = document.querySelector("#suggestion__send");
 let elSuggestionLocation = document.querySelector("#suggestion__location")
 let elSuggestionDate = document.querySelector("#suggestion__date");
 let elSuggestionReason = document.querySelector("#suggestion__reason");
@@ -21,21 +21,6 @@ function setCurrentDate() {
     elSuggestionDate.setAttribute("value", date);
 }
 
-// function to set the viepwort center to the current location
-function setCurrentLocation() {
-    function success(position) {
-        map.setView([position.coords.latitude,position.coords.longitude], 10);
-    }
-    function error() {
-        console.log("unable to retrieve location");
-    }
-    if (!navigator.geolocation) {
-        console.log("no location available");
-    } else {
-        navigator.geolocation.getCurrentPosition(success, error);
-    }
-}
-
 // function to show modal with confirmation
 function confirmSuggestion(location, date, reason) {
     document.querySelector("#modal h2").textContent = "thanks";
@@ -51,7 +36,24 @@ function showError(bodyText) {
     elModal.showModal();
 }
 
-// function to create a random end date based on start date + maximal range
+// function to set the viewort center to the current location
+function setCurrentLocation() {
+    function success(position) {
+        map.setView([position.coords.latitude,position.coords.longitude], 10);
+    }
+  
+    function error() {
+        console.log("unable to retrieve location");
+    }
+  
+    if (!navigator.geolocation) {
+        console.log("no location available");
+    } else {
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
+}
+
+// function to create a random end datebased on start date + maximal range
 function createRandomDate(startDate, range) {
     const date = new Date(startDate);
     const endDate = date.getDate()+Math.floor(Math.random()*range);
@@ -60,7 +62,7 @@ function createRandomDate(startDate, range) {
 }
 
 // function to convert regionCodes into names
-async function convertRegionName(region) {
+function convertRegionName(region) {
     const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
     const regionName = regionNamesInEnglish.of(region);
     return regionName;
@@ -68,35 +70,35 @@ async function convertRegionName(region) {
 
 // rewrite to proper async logic
 // function to create the location object of the suggested location
-async function createLocationObject(data) {
-    const locationToAdd = {
-        id: locations.length,
-        location: elSuggestionLocation.value,
-        country: convertRegionName(data[0].country),
-        geoLoc: {lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]},
-        period: {start: elSuggestionDate.value, end: createRandomDate(elSuggestionDate.value, 7)},
-        places: [{lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]}],
-        thumbnail: {thumb: "atb_logo_13_blackbg.jpg",
-                    alt: "white glowing cube in front of dark background"},
-        images: ["atb_placeholder.jpg",
-                "atb_placeholder.jpg",
-                "atb_placeholder.jpg",
-                "atb_placeholder.jpg",
-                "atb_placeholder.jpg",
-                "atb_placeholder.jpg"],
-        altImages:  ["white glowing cube in front of dark background",
-                    "white glowing cube in front of dark background",
-                    "white glowing cube in front of dark background",
-                    "white glowing cube in front of dark background",
-                    "white glowing cube in front of dark background",
-                    "white glowing cube in front of dark background"],
-        credits: [`Location ${elSuggestionLocation.value} was suggested by user.<p>Do you want to make a suggestion as well? <a href='suggestlocation.html'>[click here]</a></p>`],
-        reason: elSuggestionReason.value,
-        textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
-        suggested: true
-    };
-    // console.log(locationToAdd);
-    return locationToAdd;
+function createLocationObject(data) {
+const locationToAdd = {
+    id: locations.length,
+    location: elSuggestionLocation.value,
+    country: convertRegionName(data[0].country),
+    geoLoc: {lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]},
+    period: {start: elSuggestionDate.value, end: createRandomDate(elSuggestionDate.value, 7)},
+    places: [{lat:currentSuggestionCoord[0], lon: currentSuggestionCoord[1]}],
+    thumbnail: {thumb: "atb_logo_13_blackbg.jpg",
+                alt: "white glowing cube in front of dark background"},
+    images: ["atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg",
+            "atb_placeholder.jpg"],
+    altImages:  ["white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background",
+                "white glowing cube in front of dark background"],
+    credits: [`Location ${elSuggestionLocation.value} was suggested by user.<p>Do you want to make a suggestion as well? <a href='suggestlocation.html'>[click here]</a></p>`],
+    reason: elSuggestionReason.value,
+    textBody: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores a qui exercitationem velit omnis ullam nemo? Corporis modi eum non culpa deserunt, animi tenetur perspiciatis eos unde similique qui sequi accusamus. Dolorem, eligendi molestiae. Aliquam, eum velit accusamus fuga aliquid et ex tenetur quisquam numquam labore soluta, deleniti aut necessitatibus impedit dolorem! Debitis nulla harum dolorem animi? Repellendus architecto sapiente ex deserunt ea quia nobis quos cum. Ducimus aspernatur ab dignissimos soluta alias reiciendis eius enim ipsum earum provident distinctio incidunt, pariatur qui odit voluptate quidem ipsam, error magni vel. Debitis deleniti asperiores quasi harum unde optio, facere eum quaerat.",
+    suggested: true
+};
+// console.log(locationToAdd);
+return locationToAdd;
 }
 
 // function to reset the input fields
@@ -107,52 +109,33 @@ function resetInput() {
 }
 
 // event listener to send form
-elBnSuggestion.addEventListener("click", async function(e) {
+elBtSuggestion.addEventListener("click", function(e) {
     e.preventDefault();
     let location = elSuggestionLocation.value;
     let date = elSuggestionDate.value;
     let reason = elSuggestionReason.value;
     if(location !== "" && date !== "" && reason !== "") {
         // async validate location -> get country, coordinates
-        let validLocation = await getLocation("geoCodingReverse", currentSuggestionCoord);
-        await locationsSerialized.addLocation(createLocationObject(validLocation));
+        //validateLocation("geoCodingGeneral", location);
+        validateLocation("geoCodingReverse", currentSuggestionCoord);
         confirmSuggestion(location, date, reason);
     } else {
         showError("please enter a destination and a reason");
     }
-    resetInput();
 });
 
 // function to create a random latLon pair
 function createRandomCoordinates() {
     let lat = Math.round((Math.random()*360-180)*100000)/100000;
     let lon = Math.round((Math.random()*180-90)*100000)/100000;
+    // console.log(lat, lon);
     return [lat,lon];
-}
-
-// async function to get a valid random location
-async function getRandomSuggestion() {
-    let validCoordinates = false;
-    let data;
-    let location;
-    while(!validCoordinates) {
-        location = createRandomCoordinates();
-        data = await getLocation("geoCodingReverse", location);
-        if(data !== undefined) {
-            validCoordinates = true;
-        }
-    }
-    map.setView([location[0],location[1]], 6);
-    currentSuggestionCoord = location;
-    createSuggestionMarker(location);
-    await setLocation(data[0].name);
-    elSuggestionDate.value = createRandomDate(today.toISOString().split("T")[0], 738760);
 }
 
 // event listener to create random location
 elBnSuggestionRandom.addEventListener("click", function(e) {
     e.preventDefault();
-    getRandomSuggestion();
+    getRandomLocation("geoCodingReverse");
 });
 
 // event listener to close the modal
@@ -175,11 +158,7 @@ elSuggestionLocation.addEventListener("focusout", function() {
     currentSuggestionLocation = getCoordinates("geoCodingGeneral", elSuggestionLocation.value);
 });
 
-async function setLocation(location) {
-    elSuggestionLocation.value = location;
-}
-
-// async function for creating Markers and adding it to the map, Marker Positions are saved in the locations Array
+// function for creating Markers and adding it to the map, Marker Positions are saved in the locations Array
 function createSuggestionMarker(latLon) {
     if(suggestionMarker != undefined) {
         map.removeLayer(suggestionMarker);
@@ -189,15 +168,14 @@ function createSuggestionMarker(latLon) {
     }).on("mouseout", function() {
         this.setIcon(boxIcon);
     }).addTo(map);
+    getLocation("geoCodingReverse", latLon);
 }
 
 // build-in eventlistener on map click event to place marker
-map.on("click", async function(e) {
+map.on("click", function(e) {
     latLon = [e.latlng.lat,e.latlng.lng];
     currentSuggestionCoord = [e.latlng.lat,e.latlng.lng];
     createSuggestionMarker(latLon);
-    let location = await getLocation("geoCodingGeneral", latLon)
-    await setLocation(location);
 });
 
 setCurrentDate();

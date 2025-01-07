@@ -24,3 +24,13 @@
 #suggestion__random {
     cursor: pointer;
 }
+
+.suggestion__container {
+    margin-bottom: var(--gap-medium);
+}
+
+@media screen and (min-width: 1024px) {
+    .suggestion__container {
+        margin-bottom: var(--gap-xlarge);
+    }
+}

@@ -1,15 +1,3 @@
-// function for getting the url for the API call of pixabay
-function getUrlImages(type, locationName) {
-    let url = "";
-    switch (type) {
-        case "locationImages":
-            const urlImages = `https://pixabay.com/api/`;
-            return url = `${urlImages}?q=${locations[locationId].location}&type=photo&category=travel&key=${imagesApiKey}`;
-        default:
-            break;
-    }
-}
-
 // async function to fetch the data from the pixabay api
 async function getImages(url) {
     try {
@@ -19,18 +7,21 @@ async function getImages(url) {
         }
         const data = await response.json();
         if(data.hits.length > 0) {
+            let i = 0;
             for(entry in data.hits) {
-
-                suggestedImages.push([data.hits[entry].webformatURL,data.hits[entry].pageURL]);
+                if(i<15) {
+                    let image = data.hits[entry];
+                    suggestedImages.push([image.webformatURL, image.pageURL, image.hasOwnProperty("user") ? image.user : image.user_id]);
+                    i++;
+                }
             }
         }
         if(locations[locationId].suggested) {
-            populateGallerySuggestion();
+            await populateGallerySuggestion();
         }
-        return data;
     } catch(error) {
         console.error(error.message);
     }
 }
 
-getImages(getUrlImages("locationImages", "Hamburg"));
+getImages(getUrl("locationImages",""));

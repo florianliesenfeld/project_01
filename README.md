@@ -3,8 +3,13 @@
 ## project 01 HCS Fullstack-Course 09/2024
 Do we need another travel blog? Probably not. This one is about time travel.
 
-site can be visited online at https://travelblog.florianliesenfeld.de/
+site can be visited at https://travelblog.florianliesenfeld.de/
 
 
-## some Known Issues
-- img on suggested sites are placeholders
+## frameworks
+- https://leafletjs.com/
+- https://flickity.metafizzy.co/
+
+## API's
+- https://openweathermap.org/api/
+- https://pixabay.com/service/about/api/

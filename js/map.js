@@ -1,22 +1,5 @@
 // create maps and markers
-
 let map;
-
-// let boxIcon2 = L.icon({
-//     iconUrl: 'images/marker/atb_marker_purple_05.png',
-//     iconRetinaUrl: 'images/marker/atb_marker_purple_05.png',
-//     iconSize:     [128, 128], // size of the icon
-//     iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
-//     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-// });
-
-// let boxIcon = L.icon({
-//     iconUrl: 'images/marker/atb_marker_dark_05.png',
-//     iconRetinaUrl: 'images/marker/atb_marker_dark_05.png',
-//     iconSize:     [128, 128], // size of the icon
-//     iconAnchor:   [64, 64], // point of the icon which will correspond to marker's location
-//     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-// });
 
 let boxIcon2 = L.icon({
     iconUrl: 'images/marker/atb_marker_purple_05.png',
@@ -33,7 +16,6 @@ let boxIcon = L.icon({
     iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
-
 
 // function for creating a based on the parameters lat,lon,zoom and mapUrl
 function createMap(lat,lon,zoom, mapUrl) {
